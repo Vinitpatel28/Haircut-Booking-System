@@ -33,7 +33,7 @@ HairHub is an intuitive and user-friendly haircut booking system designed to sim
 ## 🛠️ Installation & Setup
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/HairHub.git
+   git clone https://github.com/Vinitpatel28/Haircut-Booking-System.git
    ```
 2. Navigate to the project directory:
    ```sh
