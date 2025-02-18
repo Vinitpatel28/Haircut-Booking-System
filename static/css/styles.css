@@ -6,10 +6,10 @@
 }
 
 :root {
-    --primary-color: #2c3e50;
+    --primary-color: #070707;
     --accent-color: #e74c3c;
     --bg-color: #f5f6fa;
-    --text-color: #2d3436;
+    --text-color: #1c2022;
 }
 
 body {
@@ -27,12 +27,21 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-
 .logo {
-    color: white;
+    display: flex;
+    align-items: center;
     font-size: 1.5rem;
     font-weight: bold;
+    color: white;
 }
+
+.logo img {
+    width: 40px;  /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+    margin-right: 10px;
+    border-radius: 50%; /* Optional: Makes the icon round */
+}
+
 
 .nav-links a {
     color: white;
@@ -43,7 +52,7 @@ body {
 /* Hero Section */
 .hero {
     height: 80vh;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../images/hero.jpg');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../images/hero.jpg');
     background-size: cover;
     display: flex;
     align-items: center;
@@ -149,4 +158,526 @@ body {
     .hero-content h1 {
         font-size: 2rem;
     }
+}
+
+
+/* Hero Section with Background Video */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full screen height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+/* Background Video */
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+/* Overlay for better text visibility */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0 ); /* Dark overlay */
+    z-index: -1;
+}
+
+/* Hero Content */
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* CTA Button */
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+.cta-button:hover {
+    background-color: #d9432a;
+}
+
+/* Footer Center Alignment */
+footer {
+    background: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 3rem;
+}
+
+/* Services Section */
+.services {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.service-description {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+/* Service Grid */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-items: center;
+}
+
+/* Service Cards */
+.service-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Service Card Hover Effect */
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Image Styling */
+.service-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+/* Image Zoom Effect on Hover */
+.service-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Title Styling */
+.service-card h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Description Styling */
+.service-card p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+/* Price Styling */
+.service-card .price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+}
+
+
+
+
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+/* Form Steps */
+.form-step {
+    display: none;
+    text-align: center;
+}
+
+.form-step.active {
+    display: block;
+}
+
+.next-btn, .prev-btn, .submit-btn {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: 0.3s ease;
+}
+
+.next-btn {
+    background: var(--primary-color);
+    color: white;
+}
+
+.next-btn:hover {
+    background: #1a252f;
+}
+
+.prev-btn {
+    background: #ccc;
+    color: black;
+}
+
+.prev-btn:hover {
+    background: #aaa;
+}
+
+.submit-btn {
+    background: var(--accent-color);
+    color: white;
+}
+
+.submit-btn:hover {
+    background: #c0392b;
+}
+
+/* Summary */
+#summary-service, #summary-barber, #summary-date, #summary-time {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+
+
+
+.appointment-list {
+    padding: 1rem;
+}
+
+.appointment-item {
+    background: #ffffff;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.submit-btn {
+    background: #e74c3c;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #c0392b;
+}
+
+
+/* Barbers Section */
+.barbers {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: var(--bg-color);
+}
+
+.barber-description {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+/* Barber Grid */
+.barber-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-items: center;
+}
+
+/* Barber Cards */
+.barber-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+/* Hover Effect */
+.barber-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Barber Image */
+.barber-card img {
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* Image Zoom Effect */
+.barber-card:hover img {
+    transform: scale(1.1);
+}
+
+/* Barber Name */
+.barber-card h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+/* Barber Details */
+.barber-card p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+}
+
+/* Barber Card Tag */
+.barber-card::before {
+    content: "Expert Barber";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--accent-color);
+    color: white;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .barber-card {
+        width: 100%;
+    }
+}
+
+
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* :root {
+    --primary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --bg-color: #f5f6fa;
+    --text-color: #2d3436;
+} */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Navigation */
+.navbar {
+    background: var(--primary-color);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 2rem;
+}
+
+/* Booking & Payment Containers */
+.booking-container, .payment-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 2rem;
+}
+
+.booking-form, .payment-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Form Inputs */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Buttons */
+.submit-btn {
+    background: var(--accent-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #c0392b;
+}
+
+/* Success Message */
+.success-message {
+    display: none;
+    text-align: center;
+    font-weight: bold;
+    color: green;
+    margin-top: 10px;
+}
+
+/* Footer */
+footer {
+    background: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 3rem;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.modal-content button:hover {
+    background-color: #c0392b;
+}
+
+
+
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Payment Container */
+.payment-container {
+    max-width: 800px;
+    margin: 30px auto;
+    text-align: center;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-container h2 {
+    margin-bottom: 20px;
+}
+
+.services {
+    background-color: rgb(212, 178, 178);
+
+}
+
+.barbers{
+    background-color: #dcd6d5;
 }

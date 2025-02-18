@@ -18,22 +18,108 @@ function handleFormSubmit(event, formData, successCallback) {
 // Initialize event listeners when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Booking form handling
-    const bookingForm = getElement('.booking-form');
-    if (bookingForm) {
-        bookingForm.addEventListener('submit', function(e) {
-            const formData = {
-                service: getElement('#service')?.value || '',
-                date: getElement('#date')?.value || '',
-                time: getElement('#time')?.value || ''
-            };
-            
-            handleFormSubmit(e, formData, function() {
-                alert('Booking successful!');
-                bookingForm.reset();
+    document.addEventListener("DOMContentLoaded", function () {
+        const formSteps = document.querySelectorAll(".form-step");
+        const nextBtns = document.querySelectorAll(".next-btn");
+        const prevBtns = document.querySelectorAll(".prev-btn");
+        const summaryService = document.getElementById("summary-service");
+        const summaryBarber = document.getElementById("summary-barber");
+        const summaryDate = document.getElementById("summary-date");
+        const summaryTime = document.getElementById("summary-time");
+        let currentStep = 0;
+    
+        function showStep(step) {
+            formSteps.forEach((el, index) => {
+                el.style.display = index === step ? "block" : "none";
+            });
+        }
+    
+        nextBtns.forEach((button) => {
+            button.addEventListener("click", () => {
+                if (currentStep < formSteps.length - 1) {
+                    currentStep++;
+                    if (currentStep === formSteps.length - 2) {
+                        summaryService.textContent = document.getElementById("service").value;
+                        summaryBarber.textContent = document.getElementById("barber").value;
+                        summaryDate.textContent = document.getElementById("date").value;
+                        summaryTime.textContent = document.getElementById("time").value;
+                    }
+                    showStep(currentStep);
+                }
             });
         });
-    }
+    
+        prevBtns.forEach((button) => {
+            button.addEventListener("click", () => {
+                if (currentStep > 0) {
+                    currentStep--;
+                    showStep(currentStep);
+                }
+            });
+        });
+    
+        showStep(currentStep);
+    });
+    
+    document.getElementById("booking-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent page reload
+    
+        const service = document.getElementById("service").value;
+        const date = document.getElementById("date").value;
+        const time = document.getElementById("time").value;
+    
+        if (!service || !date || !time) {
+            alert("Please fill in all fields.");
+            return;
+        }
+    
+        // Save the appointment
+        const appointment = { service, date, time };
+        let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+        appointments.push(appointment);
+        localStorage.setItem("appointments", JSON.stringify(appointments));
+    
+        alert("Appointment booked successfully!");
+    
+        // Redirect to dashboard after booking
+        // window.location.href = "./dashboard.html";
+    });
+    
+    document.addEventListener("DOMContentLoaded", function () {
+        const bookingForm = document.getElementById("booking-form");
+        const successMessage = document.getElementById("success-message");
+    
+        if (bookingForm) {
+            bookingForm.addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent actual form submission
+                
+                // Show success message
+                successMessage.style.display = "block";
+    
+                // Wait for 3 seconds, then redirect to payment
+                setTimeout(() => {
+                    window.location.href = "payment.html"; // Redirect to the payment page
+                }, 3000);
+            });
+        }
+    });
 
+    document.addEventListener("DOMContentLoaded", function () {
+        const bookingForm = document.getElementById("booking-form");
+    
+        if (bookingForm) {
+            bookingForm.addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent actual form submission
+                
+                // Show popup success message
+                if (confirm("✅ Appointment booked successfully! Click OK to proceed to payment.")) {
+                    window.location.href = "payment.html"; // Redirect to payment page when OK is clicked
+                }
+            });
+        }
+    });
+    
+        
     // Login form handling
     const loginForm = getElement('.auth-form');
     if (loginForm && window.location.pathname.includes('login.html')) {
@@ -50,28 +136,57 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Signup form handling
-    if (loginForm && window.location.pathname.includes('signup.html')) {
-        loginForm.addEventListener('submit', function(e) {
-            const password = getElement('#password')?.value || '';
-            const confirmPassword = getElement('#confirm-password')?.value || '';
-            
-            if (password !== confirmPassword) {
-                alert('Passwords do not match!');
-                return;
-            }
-
-            const formData = {
-                name: getElement('#name')?.value || '',
-                email: getElement('#email')?.value || '',
-                password: password
-            };
-            
-            handleFormSubmit(e, formData, function() {
-                window.location.href = 'login.html';
+    document.addEventListener("DOMContentLoaded", function () {
+        const signUpForm = document.querySelector(".auth-form");
+    
+        if (signUpForm) {
+            signUpForm.addEventListener("submit", function (event) {
+                event.preventDefault(); // Prevent page refresh
+    
+                const name = document.getElementById("name").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const password = document.getElementById("password").value;
+                const confirmPassword = document.getElementById("confirm-password").value;
+    
+                // Validate inputs
+                if (name === "" || email === "" || password === "" || confirmPassword === "") {
+                    alert("⚠️ Please fill in all the fields.");
+                    return;
+                }
+    
+                if (!validateEmail(email)) {
+                    alert("⚠️ Please enter a valid email address.");
+                    return;
+                }
+    
+                if (password.length < 6) {
+                    alert("⚠️ Password must be at least 6 characters.");
+                    return;
+                }
+    
+                if (password !== confirmPassword) {
+                    alert("⚠️ Passwords do not match.");
+                    return;
+                }
+    
+                // Store user data (this is just for testing, real projects should use a database)
+                localStorage.setItem("user", JSON.stringify({ name, email, password }));
+    
+                // Show success message
+                alert("✅ Signup successful! Redirecting to login page...");
+    
+                // Redirect to login page
+                window.location.href = "login.html";
             });
-        });
+        }
+    });
+    
+    // Email Validation Function
+    function validateEmail(email) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
     }
-
+    
     // Dashboard functionality
     const upcomingAppointments = getElement('.appointment-list');
     if (upcomingAppointments && window.location.pathname.includes('dashboard.html')) {

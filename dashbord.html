@@ -21,19 +21,49 @@
         <div class="appointments-grid">
             <div class="appointment-card">
                 <h3>Upcoming Appointments</h3>
-                <div class="appointment-list">
-                    <!-- Appointments will be dynamically added here -->
+                <div id="upcoming-appointments" class="appointment-list">
+                    <!-- Upcoming appointments will be shown here -->
                 </div>
             </div>
             <div class="appointment-card">
                 <h3>Past Appointments</h3>
-                <div class="appointment-list">
-                    <!-- Past appointments will be dynamically added here -->
+                <div id="past-appointments" class="appointment-list">
+                    <!-- Past appointments will be shown here -->
                 </div>
             </div>
         </div>
     </main>
 
-    <script src="static/js/script.js"></script>
+    <script>
+        function loadAppointments() {
+            let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+            const upcomingContainer = document.getElementById("upcoming-appointments");
+            const pastContainer = document.getElementById("past-appointments");
+            const today = new Date().toISOString().split("T")[0];
+
+            upcomingContainer.innerHTML = "";
+            pastContainer.innerHTML = "";
+
+            if (appointments.length === 0) {
+                upcomingContainer.innerHTML = "<p>No upcoming appointments.</p>";
+                pastContainer.innerHTML = "<p>No past appointments.</p>";
+                return;
+            }
+
+            appointments.forEach(appt => {
+                const appointmentItem = document.createElement("div");
+                appointmentItem.classList.add("appointment-item");
+                appointmentItem.innerHTML = `<p><strong>${appt.service}</strong> on ${appt.date} at ${appt.time}</p>`;
+
+                if (appt.date >= today) {
+                    upcomingContainer.appendChild(appointmentItem);
+                } else {
+                    pastContainer.appendChild(appointmentItem);
+                }
+            });
+        }
+
+        window.onload = loadAppointments;
+    </script>
 </body>
 </html>

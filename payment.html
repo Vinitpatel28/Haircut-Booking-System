@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HairHub - Payment</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+    <style>
+        .payment-container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px; /* Adjusted for a better fit */
+    display: flex;
+    flex-direction: column; /* Ensures vertical stacking */
+    align-items: stretch; /* Aligns items properly */
+    gap: 10px; /* Adds space between options */
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 1px solid #ddd;
+    background-color: #f8f9fa;
+    width: 100%; /* Ensures it spans the container */
+}
+
+.payment-option:hover, .payment-option.selected {
+    background-color: #f0f8ff;
+    border-color: #007bff;
+}
+
+.payment-icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.payment-icon img {
+    width: 30px;
+    height: 30px;
+}
+
+.payment-option img:last-child {
+    width: auto;
+    height: 20px;
+}
+
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="static/images/icon.jpg" alt="HairHub Logo">
+            HairHub
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="booking.html">Book Now</a>
+            <a href="login.html">Login</a>
+            <a href="signup.html">Sign Up</a>
+        </div>
+    </nav>
+    
+    <main class="payment-container">
+        <h2>Select Payment Method</h2>
+        
+        <div class="payment-option" data-method="card">
+            <div class="payment-icon">
+                <img src="static/images/card_icon.jpg" alt="Card">
+                <span>Credit / Debit Card</span>
+            </div>
+            <img src="static/images/visa_mastercard.png" alt="Card Types">
+        </div>
+        
+        <div class="payment-option" data-method="upi">
+            <div class="payment-icon">
+                <img src="static/images/upi_icon.png" alt="UPI">
+                <span>UPI</span>
+            </div>
+            <img src="static/images/upi_methods.png" alt="UPI Methods">
+        </div>
+        
+        <div class="payment-option" data-method="netbanking">
+            <div class="payment-icon">
+                <img src="static/images/netbanking_icon.jpg" alt="NetBanking">
+                <span>NetBanking</span>
+            </div>
+            <img src="static/images/bank_logos.png" alt="Bank Logos">
+        </div>
+        
+        <div class="payment-option" data-method="wallets">
+            <div class="payment-icon">
+                <img src="static/images/wallet_icon.jpg" alt="Wallets">
+                <span>Wallets</span>
+            </div>
+            <img src="static/images/paytm_wallet.png" alt="Wallets">
+        </div>
+        
+        <div class="payment-option" data-method="emi">
+            <div class="payment-icon">
+                <img src="static/images/emi_icon.png" alt="EMI">
+                <span>EMI</span>
+            </div>
+            <img src="static/images/emi_logo.png" alt="EMI">
+        </div>
+        
+        <div class="payment-option" data-method="bank_transfer">
+            <div class="payment-icon">
+                <img src="static/images/bank_transfer_icon.png" alt="Bank Transfer">
+                <span>IMPS / NEFT / RTGS</span>
+            </div>
+            <img src="static/images/imps_neft.png" alt="Bank Transfer">
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 HairHub. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        document.querySelectorAll('.payment-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                let method = this.getAttribute('data-method');
+                setTimeout(() => {
+                    if (confirm(`You selected ${method}. Proceed to payment?`)) {
+                        window.location.href = 'payment_confirmation.html';
+                    }
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>

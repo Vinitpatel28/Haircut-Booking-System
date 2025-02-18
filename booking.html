@@ -3,42 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HairHub - Book Appointment</title>
+    <title>Book Appointment - HairHub</title>
     <link rel="stylesheet" href="static/css/styles.css">
+    <script defer src="static/js/script.js"></script>
 </head>
 <body>
+
     <nav class="navbar">
-        <div class="logo">HairHub</div>
+        <div class="logo">
+            <img src="static/images/icon.jpg" alt="HairHub Logo">
+            HairHub
+        </div>
         <div class="nav-links">
             <a href="index.html">Home</a>
-            <a href="dashboard.html">Dashboard</a>
+            <a href="dashbord.html">Dashboard</a>
+            <a href="payment.html">Payment</a>
         </div>
     </nav>
 
     <main class="booking-container">
-        <form class="booking-form">
+        <div class="booking-form">
             <h2>Book Your Appointment</h2>
-            <div class="form-group">
-                <label for="service">Service</label>
-                <select id="service" required>
-                    <option value="">Select a service</option>
-                    <option value="haircut">Haircut</option>
-                    <option value="styling">Styling</option>
-                    <option value="beard">Beard Trim</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="date">Date</label>
-                <input type="date" id="date" required>
-            </div>
-            <div class="form-group">
-                <label for="time">Time</label>
-                <input type="time" id="time" required>
-            </div>
-            <button type="submit" class="submit-btn">Book Now</button>
-        </form>
+
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="service">Select Service:</label>
+                    <select id="service" required>
+                        <option value="haircut">Haircut - $30</option>
+                        <option value="styling">Styling - $25</option>
+                        <option value="beard-trim">Beard Trim - $20</option>
+                        <option value="hair-color">Hair Coloring - $40</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="barber">Select Barber:</label>
+                    <select id="barber" required>
+                        <option value="john-doe">John Doe - Master Barber</option>
+                        <option value="sarah-smith">Sarah Smith - Hair Stylist</option>
+                        <option value="michael-brown">Michael Brown - Beard Specialist</option>
+                        <option value="emily-johnson">Emily Johnson - Creative Stylist</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Select Date:</label>
+                    <input type="date" id="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="time">Select Time:</label>
+                    <input type="time" id="time" required>
+                </div>
+
+                <button type="submit" class="submit-btn">Book Appointment</button>
+            </form>
+        </div>
     </main>
 
-    <script src="static/js/script.js"></script>
+    <!-- Success Popup Modal -->
+    <div id="success-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>🎉 Booking Successful!</h2>
+            <p>Your appointment has been booked successfully.</p>
+            <button id="ok-btn">OK</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 HairHub. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>

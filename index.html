@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HairHub - Home</title>
     <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">HairHub</div>
+        <div class="logo">
+            <img src="static/images/icon.jpg" alt="HairHub Logo">
+            HairHub
+        </div>
+        
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="booking.html">Book Now</a>
@@ -18,6 +23,11 @@
     </nav>
 
     <header class="hero">
+        <video autoplay muted loop class="hero-video">
+            <source src="static/video/US.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Welcome to HairHub</h1>
             <p>Your Premier Hair Styling Destination</p>
@@ -26,23 +36,70 @@
     </header>
 
     <main>
+        <!-- Our Services Section -->
         <section class="services">
             <h2>Our Services</h2>
+            <p class="service-description">We offer high-quality haircuts, styling, and grooming services tailored to your needs.</p>
             <div class="service-grid">
                 <div class="service-card">
+                    <img src="static/images/haircut.jpeg" alt="Haircut">
                     <h3>Haircut</h3>
-                    <p>Professional cuts for all styles</p>
-                    <span class="price">$30</span>
+                    <p>Professional haircuts for men, women, and children. Get a fresh new look!</p>
+                    <span class="price">Rs.200</span>
                 </div>
                 <div class="service-card">
+                    <img src="static/images/styling.jpg" alt="Styling">
                     <h3>Styling</h3>
-                    <p>Complete styling solutions</p>
-                    <span class="price">$25</span>
+                    <p>From casual to professional styles, we have the perfect look for you.</p>
+                    <span class="price">Rs.250</span>
                 </div>
                 <div class="service-card">
+                    <img src="static/images/beard-trim.jpeg" alt="Beard Trim">
                     <h3>Beard Trim</h3>
-                    <p>Expert beard grooming</p>
-                    <span class="price">$20</span>
+                    <p>Keep your beard sharp and well-groomed with our expert trimming services.</p>
+                    <span class="price">Rs.100</span>
+                </div>
+                <div class="service-card">
+                    <img src="static/images/hair-color.jpeg" alt="Hair Coloring">
+                    <h3>Hair Coloring</h3>
+                    <p>Enhance your look with a variety of hair coloring options.</p>
+                    <span class="price">Rs.200</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Meet Our Barbers Section -->
+        <section class="barbers">
+            <h2>Meet Our Barbers</h2>
+            <p class="barber-description">Our professional barbers are experienced in creating modern and classic styles.</p>
+            <div class="barber-grid">
+                <div class="barber-card">
+                    <img src="static/images/barber1.jpg" alt="John Doe">
+                    <h3>John Doe</h3>
+                    <p><strong>Profession:</strong> Master Barber</p>
+                    <p><strong>Experience:</strong> 10+ years</p>
+                    <p><strong>Skills:</strong> Fades, Classic Cuts, Beard Grooming</p>
+                </div>
+                <div class="barber-card">
+                    <img src="static/images/barber2.jpg" alt="Sarah Smith">
+                    <h3>Sarah Smith</h3>
+                    <p><strong>Profession:</strong> Hair Stylist</p>
+                    <p><strong>Experience:</strong> 8+ years</p>
+                    <p><strong>Skills:</strong> Styling, Hair Coloring, Layered Cuts</p>
+                </div>
+                <div class="barber-card">
+                    <img src="static/images/barber3.jpg" alt="Michael Brown">
+                    <h3>Michael Brown</h3>
+                    <p><strong>Profession:</strong> Beard Specialist</p>
+                    <p><strong>Experience:</strong> 7+ years</p>
+                    <p><strong>Skills:</strong> Beard Trimming, Shaving, Grooming</p>
+                </div>
+                <div class="barber-card">
+                    <img src="static/images/barber4.jpg" alt="Emily Johnson">
+                    <h3>Emily Johnson</h3>
+                    <p><strong>Profession:</strong> Creative Stylist</p>
+                    <p><strong>Experience:</strong> 9+ years</p>
+                    <p><strong>Skills:</strong> Trendy Cuts, Styling, Hair Coloring</p>
                 </div>
             </div>
         </section>
@@ -51,7 +108,7 @@
     <footer>
         <p>&copy; 2025 HairHub. All rights reserved.</p>
     </footer>
-    
+
     <script src="static/js/script.js"></script>
 </body>
 </html>
